@@ -60,7 +60,7 @@ typedef struct
 } USART_config_t;
 
 void USART_transmit(uint8_t data);
-int8_t USART_configure(const USART_config_t *config);
+void USART_configure(const USART_config_t *config);
 
 
 #endif

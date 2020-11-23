@@ -35,16 +35,13 @@ void USART_transmit(uint8_t data)
     UDR = data;
 }
 
-int8_t USART_configure(const USART_config_t *config)
+void USART_configure(const USART_config_t *config)
 {
-    if(config == NULL)
+    if(config != NULL)
     {
-        return -1;
+        UBRRH = (UBRR >> 8);
+        UBRRL = (UBRR);
+        UCSRB = (1 << RXEN)|(1 << TXEN);
+        UCSRC = (1 << URSEL)|(1 << USBS) | (3 << UCSZ0);
     }
-
-    UBRRH = (UBRR >> 8);
-    UBRRL = (UBRR);
-    UCSRB = (1 << RXEN)|(1 << TXEN);
-    UCSRC = (1 << URSEL)|(1 << USBS) | (3 << UCSZ0);
-    return 0;
 }
