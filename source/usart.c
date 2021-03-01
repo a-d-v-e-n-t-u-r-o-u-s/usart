@@ -25,8 +25,8 @@
 #include <stddef.h>
 #include <avr/io.h>
 
-#define BAUDRATE 500000UL
-#define UBRR F_CPU/16/BAUDRATE - 1
+#define BAUDRATE        500000UL
+#define UBRR            (F_CPU/16/BAUDRATE - 1)
 
 void USART_transmit(uint8_t data)
 {
