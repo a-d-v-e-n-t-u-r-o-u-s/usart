@@ -22,6 +22,7 @@
  */
 
 #include "usart.h"
+#include "hardware.h"
 #include <stddef.h>
 #include <avr/io.h>
 
