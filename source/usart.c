@@ -31,7 +31,7 @@
 
 void USART_transmit(uint8_t data)
 {
-    while(!(UCSRA & (1 << UDRE)));
+    while((UCSRA & (1 << UDRE)) == 0);
 
     UDR = data;
 }
