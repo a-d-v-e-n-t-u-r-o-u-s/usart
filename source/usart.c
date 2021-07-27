@@ -33,6 +33,7 @@ void USART_transmit(uint8_t data)
 {
     while((UCSRA & (1 << UDRE)) == 0)
     {
+        /* busy wait for flag to be set */
     }
 
     UDR = data;
