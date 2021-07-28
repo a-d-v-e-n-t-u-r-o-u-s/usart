@@ -25,9 +25,12 @@
 #include "hardware.h"
 #include <stddef.h>
 #include <avr/io.h>
+#include <limits.h>
 
 #define BAUDRATE        500000UL
 #define UBRR            (F_CPU/16/BAUDRATE - 1)
+
+#define MODE_8BIT_MASK  (3u << UCSZ0)
 
 void USART_transmit(uint8_t data)
 {
@@ -43,9 +46,9 @@ void USART_configure(const USART_config_t *config)
 {
     if(config != NULL)
     {
-        UBRRH = (UBRR >> 8);
+        UBRRH = (UBRR >> CHAR_BIT);
         UBRRL = (UBRR);
         UCSRB = (1 << RXEN)|(1 << TXEN);
-        UCSRC = (1 << URSEL)|(1 << USBS) | (3 << UCSZ0);
+        UCSRC = (1 << URSEL)|(1 << USBS) | MODE_8BIT_MASK;
     }
 }
