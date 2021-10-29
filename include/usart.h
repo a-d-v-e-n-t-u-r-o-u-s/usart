@@ -24,8 +24,24 @@
 #ifndef USART_H
 #define USART_H
 
+/*!
+ *
+ * \addtogroup usart
+ * \ingroup drivers
+ * \brief USART implementation
+ */
+
+/*@{*/
+
 #include <stdint.h>
 
+/*!
+ *
+ * \addtogroup usart_baudrates
+ * \ingroup usart
+ * \brief USART baudrates
+ */
+/*@{*/
 #define USART_300_BAUDRATE      (0U)
 #define USART_1200_BAUDRATE     (1U)
 #define USART_2400_BAUDRATE     (2U)
@@ -36,31 +52,70 @@
 #define USART_57600_BAUDRATE    (7U)
 #define USART_115200_BAUDRATE   (8U)
 #define USART_230400_BAUDRATE   (9U)
+/*@}*/
 
+/*!
+ *
+ * \addtogroup usart_databits
+ * \ingroup usart
+ * \brief USART data bits
+ */
+/*@{*/
 #define USART_5_DATA_BITS       (0U)
 #define USART_6_DATA_BITS       (1U)
 #define USART_7_DATA_BITS       (2U)
 #define USART_8_DATA_BITS       (3U)
 #define USART_9_DATA_BITS       (4U)
+/*@}*/
 
+/*!
+ *
+ * \addtogroup usart_parity
+ * \ingroup usart
+ * \brief USART parity
+ */
+/*@{*/
 #define USART_NO_PARITY         (0U)
 #define USART_EVEN_PARITY       (1U)
 #define USART_ODD_PARITY        (2U)
+/*@}*/
 
+/*!
+ *
+ * \addtogroup usart_stopbits
+ * \ingroup usart
+ * \brief USART stop bits
+ */
+/*@{*/
 #define USART_1_STOP_BITS       (0U)
 #define USART_2_STOP_BITS       (1U)
+/*@}*/
 
 
+/*!
+ * \brief Usart configuration structure
+ */
 typedef struct
 {
-    uint8_t baudrate;
-    uint8_t databits;
-    uint8_t parity;
-    uint8_t stopbits;
+    uint8_t baudrate; /*!< Usart baudrate setting */
+    uint8_t databits; /*!< Usart data bits setting */
+    uint8_t parity; /*!< Usart parity setting */
+    uint8_t stopbits; /*!< Usart stop bits setting */
 } USART_config_t;
 
+/*!
+ * \brief Transmits data over usart
+ *
+ * \param data data to be transmitted
+ */
 void USART_transmit(uint8_t data);
+
+/*!
+ * \brief Configures usart driver.
+ *
+ * \param config usart configuration structure
+ */
 void USART_configure(const USART_config_t *config);
 
-
+/*@}*/
 #endif
