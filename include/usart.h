@@ -93,14 +93,25 @@
 
 
 /*!
+ * \struct USART_config_t
+ *
  * \brief Usart configuration structure
+ *
+ * \var USART_config_t::baudrate
+ *      Usart baudrate setting
+ * \var USART_config_t::databits
+ *      Usart data bits setting
+ * \var USART_config_t::parity
+ *      Usart parity setting
+ * \var USART_config_t::stopbits
+ *      Usart stop bits setting
  */
 typedef struct
 {
-    uint8_t baudrate; /*!< Usart baudrate setting */
-    uint8_t databits; /*!< Usart data bits setting */
-    uint8_t parity; /*!< Usart parity setting */
-    uint8_t stopbits; /*!< Usart stop bits setting */
+    uint8_t baudrate;
+    uint8_t databits;
+    uint8_t parity;
+    uint8_t stopbits;
 } USART_config_t;
 
 /*!
